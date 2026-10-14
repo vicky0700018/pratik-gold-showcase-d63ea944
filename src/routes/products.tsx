@@ -28,7 +28,7 @@ function Products() {
   const list = sortedProducts(data).filter((p) =>
     (active === "all" || p.categoryId === active) &&
     (!term || p.name.toLowerCase().includes(term) || p.code.toLowerCase().includes(term)));
-  const setCat = (c: string) => navigate({ search: { category: c === "all" ? undefined : c } });
+  const setCat = (c: string) => navigate({ search: c === "all" ? {} : { category: c } });
 
   return (
     <SiteLayout>
