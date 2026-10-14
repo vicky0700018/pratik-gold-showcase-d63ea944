@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { StoreProvider } from "../lib/store";
 
 function NotFoundComponent() {
   return (
@@ -78,14 +79,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Pratik Gold — Gold Rings & Earrings, Mumbai" },
+      { name: "description", content: "Pratik Gold presents elegant gold rings and gold earrings in Mumbai, Maharashtra." },
+      { name: "author", content: "Pratik Gold" },
+      { property: "og:title", content: "Pratik Gold — Gold Rings & Earrings" },
+      { property: "og:description", content: "Elegant gold rings and earrings from Pratik Gold, Mumbai." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -121,7 +121,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <StoreProvider>
+        <Outlet />
+      </StoreProvider>
     </QueryClientProvider>
   );
 }
